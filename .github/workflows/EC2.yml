@@ -1,0 +1,6 @@
+name: ENTREGA CONTINUA
+
+on:
+ workflow_call: 
+
+jobs:
