@@ -30,4 +30,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: rodrigosousadf/go_ci:${{github.ref_name}}
+        tags: rodrigosousadf/go_ci:${{github.run_number}}
