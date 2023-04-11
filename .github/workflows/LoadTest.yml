@@ -25,13 +25,13 @@ jobs:
       # uses: hashicorp/setup-terraform@633666f66e0061ca3b725c73b2ec20cd13a8fdd1
       uses: hashicorp/setup-terraform@v2.0.3
         
-    - run: terraform -chdir=Infra/CI/env/Homolog init
+    - run: terraform -chdir=Infra_CI/env/Homolog init
     
-    - run: terraform -chdir=Infra/CI/env/Homolog destroy -auto-approve
+    - run: terraform -chdir=Infra_CI/env/Homolog destroy -auto-approve
     
-    - run: terraform -chdir=Infra/CI/env/Homolog apply -auto-approve
+    - run: terraform -chdir=Infra_CI/env/Homolog apply -auto-approve
     
-    - run: echo "$(terraform -chdir=Infra/CI/env/Homolog output -raw IP_alb)"
+    - run: echo "$(terraform -chdir=Infra_CI/env/Homolog output -raw IP_alb)"
       id: URL
     
     - name: Setup Python
