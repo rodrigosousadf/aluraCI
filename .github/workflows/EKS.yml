@@ -22,7 +22,7 @@ jobs:
      
     - run: sed -i '3c\   bucket = "rodrigosousaarch1"' Infra_CI_Kubernetes/env/Homolog/Backend.tf
     
-    - run: sed -i '15c\  map_public_ip_on_launch = true"' Infra_CI_Kubernetes/infra/VPC.tf
+    - run: sed -i '15c\  map_public_ip_on_launch = true' Infra_CI_Kubernetes/infra/VPC.tf
      
     - name: HashiCorp - Setup Terraform
       # You may pin to the exact commit or the version.
