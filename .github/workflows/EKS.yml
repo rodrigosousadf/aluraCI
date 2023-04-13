@@ -48,6 +48,10 @@ jobs:
     - run: kubectl create secret generic dbname --from-literal=DBNAME=${{secrets.DBNAME}}
     - run: kubectl create secret generic port --from-literal=PORT=8000
 
+    #criar depois do segredos pra não correr o risco de iniciar sem segredos
+
+    - run: kubectl apply -f Infra_CI_Kubernetes/go.yml
+
     
      
      
