@@ -27,6 +27,8 @@ jobs:
       
     - run: terraform -chdir=Infra_CI_Kubernetes/env/Homolog init
 
+    - run: terraform -chdir=Infra_CI_Kubernetes/env/Homolog destroy -auto-approve
+    - run: return 1
     - run: terraform -chdir=Infra_CI_Kubernetes/env/Homolog apply -auto-approve
 
     - run: echo "$(terraform -chdir=Infra_CI_Kubernetes/env/Homolog output -raw IP_db)"
@@ -39,13 +41,25 @@ jobs:
     
     - run: aws eks update-kubeconfig --region us-west-2 --name homolog2
     
-    - run: kubectl get svc
+    - run: kubectl get svc kubectl delete secret
 
+
+    - run: kubectl delete secret dbhost
     - run: kubectl create secret generic dbhost --from-literal=HOST=${{steps.URL.output.stdout}}
+
+    - run: kubectl delete secret dbport
     - run: kubectl create secret generic dbport --from-literal=DBPORT=${{secrets.DBPORT}}
+
+    - run: kubectl delete secret dbuser
     - run: kubectl create secret generic dbuser --from-literal=USER=${{secrets.DBUSER}}
+
+    - run: kubectl delete secret dbpassword
     - run: kubectl create secret generic dbpassword --from-literal=PASSWORD=${{secrets.DBPASSWORD}}
+
+    - run: kubectl delete secret dbname
     - run: kubectl create secret generic dbname --from-literal=DBNAME=${{secrets.DBNAME}}
+
+    - run: kubectl delete secret port
     - run: kubectl create secret generic port --from-literal=PORT=8000
 
     #criar depois do segredos pra não correr o risco de iniciar sem segredos
