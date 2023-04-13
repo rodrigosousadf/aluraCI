@@ -28,7 +28,7 @@ jobs:
     - run: terraform -chdir=Infra_CI_Kubernetes/env/Homolog init
     #tirar os comentário dos dois abaixo pra atualizar a derrubar o cluster
     #pra não ficar gerando custos na eks. 
-    #- run: terraform -chdir=Infra_CI_Kubernetes/env/Homolog destroy -auto-approve
+    - run: terraform -chdir=Infra_CI_Kubernetes/env/Homolog destroy -auto-approve
     #- run: return 1
     - run: terraform -chdir=Infra_CI_Kubernetes/env/Homolog apply -auto-approve
 
